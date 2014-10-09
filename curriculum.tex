@@ -8,6 +8,7 @@
 
 % other packages
 \usepackage{newclude}
+\usepackage[backend=bibtex]{biblatex}
 \usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
 
 
@@ -26,11 +27,14 @@
 \renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
 
 % bibliography with mutiple entries
-\usepackage{multibib}
-\newcites{book,misc}{{Books},{Others}}
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+\addbibresource{publications.bib}
+
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
+
 \begin{document}
 %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
 %-----       resume       ---------------------------------------------------------
@@ -105,18 +109,19 @@ Detailed achievements:%
 %  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
 %  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
 \nocite{*}
-\bibliographystyle{plain}
-\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+\printbibliography
+%\bibliographystyle{plain}
+%\bibliography{publications}                        % 'publications' is the name of a BibTeX file
 
 % Publications from a BibTeX file using the multibib package
 \section{Publications}
-\nocitebook{book1,book2}
-\bibliographystylebook{plain}
-\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
-\nocitemisc{misc1,misc2,misc3}
-\bibliographystylemisc{plain}
-\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
-
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+%
 \clearpage
 %-----       letter       ---------------------------------------------------------
 % recipient data
@@ -140,6 +145,7 @@ Albert Einstein discovered that $e=mc^2$ in 1905.
 \makeletterclosing
 
 %\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+
 \end{document}
 
 
