@@ -6,9 +6,10 @@
 \renewcommand{\familydefault}{\sfdefault}
 \nopagenumbers{}
 
-% character encoding
-%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
-%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+% other packages
+\usepackage{newclude}
+\usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
+
 
 % adjust the page margins
 \usepackage[scale=0.8]{geometry}
@@ -16,7 +17,7 @@
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
 % personal data
-\input{./contactInfo.tex}
+\input{./content/contactInfo.tex}
 
 % to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
 \makeatletter
@@ -35,6 +36,7 @@
 %-----       resume       ---------------------------------------------------------
 \makecvtitle
 
+\include*{./content/educationLong}
 \section{Education}
 \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 can be left empty
 \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}
