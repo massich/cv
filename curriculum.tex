@@ -10,12 +10,39 @@
 \usepackage{newclude}
 \usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
 
-\usepackage[url=false,backend=bibtex8,
+\usepackage[backend=bibtex8,
+    url=false,
     style=authoryear,
     doi=false,  
     isbn=false,
-    backref=false, 
+    maxnames=99,
+    dashed=false,
     sorting=ydnt]{biblatex}
+
+
+\renewbibmacro*{date}{}
+\renewbibmacro*{date+extrayear}{}
+\renewbibmacro*{issue+date}{}
+\newcommand*{\bibyear}{}
+
+\defbibenvironment{bibliography}
+  {\list
+     {\iffieldequals{year}{\bibyear}
+        {}
+        {\printfield{year}%
+         \savefield{year}{\bibyear}}}
+     {\setlength{\topsep}{0pt}% layout parameters based on moderncvstyleclassic.sty
+      \setlength{\labelwidth}{\hintscolumnwidth}%
+      \setlength{\labelsep}{\separatorcolumnwidth}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \leftmargin\labelwidth%
+      \advance\leftmargin\labelsep}%
+      \sloppy\clubpenalty4000\widowpenalty4000}
+  {\endlist}
+  {\item}
+
+
+
 
 % adjust the page margins
 \usepackage[scale=0.8]{geometry}
