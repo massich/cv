@@ -18,7 +18,15 @@
     maxnames=99,
     dashed=false,
     sorting=ydnt]{biblatex}
+\usepackage{xpatch}
 
+% remove year from the author bibmacro
+\xpatchbibmacro{author}{%
+ \usebibmacro{date+extrayear}}
+ {}{}{}
+
+% remove the extra . (from expanding both the bibtex and the timeline)
+\xpatchcmd\cventry{.\strut}{\strut}{}{}
 
 %change order and wrap into \cvline
 \DeclareBibliographyDriver{article}{%
