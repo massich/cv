@@ -20,27 +20,49 @@
     sorting=ydnt]{biblatex}
 
 
-\renewbibmacro*{date}{}
-\renewbibmacro*{date+extrayear}{}
-\renewbibmacro*{issue+date}{}
-\newcommand*{\bibyear}{}
-
-\defbibenvironment{bibliography}
-  {\list
-     {\iffieldequals{year}{\bibyear}
-        {}
-        {\printfield{year}%
-         \savefield{year}{\bibyear}}}
-     {\setlength{\topsep}{0pt}% layout parameters based on moderncvstyleclassic.sty
-      \setlength{\labelwidth}{\hintscolumnwidth}%
-      \setlength{\labelsep}{\separatorcolumnwidth}%
-      \setlength{\itemsep}{\bibitemsep}%
-      \leftmargin\labelwidth%
-      \advance\leftmargin\labelsep}%
-      \sloppy\clubpenalty4000\widowpenalty4000}
-  {\endlist}
-  {\item}
-
+%change order and wrap into \cvline
+\DeclareBibliographyDriver{article}{%
+\tldatelabelcventry{
+  \thefield{year}
+    }{
+  \thefield{year}
+    }{
+    \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}}{%
+    \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  %\usebibmacro{author/translator+others}
+  %
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock
+  \printfield{version}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \newunit\newblock
+  \usebibmacro{related}%
+  \usebibmacro{finentry}}{}{}{}%
+  }
 
 
 
