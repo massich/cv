@@ -8,9 +8,14 @@
 
 % other packages
 \usepackage{newclude}
-\usepackage[backend=bibtex,sorting=ydnt]{biblatex}
 \usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
 
+\usepackage[url=false,backend=bibtex8,
+    style=authoryear,
+    doi=false,  
+    isbn=false,
+    backref=false, 
+    sorting=ydnt]{biblatex}
 
 % adjust the page margins
 \usepackage[scale=0.8]{geometry}
@@ -20,57 +25,25 @@
 % personal data
 \input{./content/contactInfo.tex}
 
-%% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
-%\makeatletter
-%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
-%\makeatother
-%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
 
-
-%\defbibenvironment{bibliography}
-%  {\list
-%     {\printtext[labelnumberwidth]{% label format from numeric.bbx
-%        \printfield{prefixnumber}%
-%        \printfield{labelnumber}}}
-%     {\setlength{\topsep}{0pt}% layout parameters from moderncvstyleclassic.sty
-%      \setlength{\labelwidth}{\hintscolumnwidth}%
-%      \setlength{\labelsep}{\separatorcolumnwidth}%
-%      \leftmargin\labelwidth%
-%      \advance\leftmargin\labelsep}%
-%      \sloppy\clubpenalty4000\widowpenalty4000}
-%  {\endlist}
-%  {\item}
-
-
-
-% bibliography with mutiple entries
-%\usepackage{multibib}
-%\newcites{book,misc}{{Books},{Others}}
-\addbibresource{publications.bib}
 
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
 
+\addbibresource{publications.bib}
 \begin{document}
 %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
 %-----       resume       ---------------------------------------------------------
 \makecvtitle
 
 \include*{./content/educationLong}
+
 \section{Publications}
 \nocite{*}
 \printbibliography[heading=subbibliography,title=aa,keyword=aa]
 \printbibliography[heading=subbibliography,title=bb,keyword=bb]
 
-
-%\nocitebook{book1,book2}
-%\bibliographystylebook{plain}
-%%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
-%\nocitemisc{misc1,misc2,misc3}
-%\bibliographystylemisc{plain}
-%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
-%
 
 \end{document}
 
