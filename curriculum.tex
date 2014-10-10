@@ -9,7 +9,16 @@
 % other packages
 \usepackage{newclude}
 \usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
-\usepackage[backend=bibtex8]{biblatex}
+\usepackage[backend=bibtex8,
+    url=false,
+    style=authoryear,
+    doi=false,  
+    isbn=false,
+    maxnames=99,
+    dashed=false,
+    sorting=ydnt]{biblatex}
+
+\usepackage{modernTimelinePublications}
 
 % adjust the page margins
 \usepackage[scale=0.8]{geometry}
@@ -19,21 +28,11 @@
 % personal data
 \input{./content/contactInfo.tex}
 
-% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
-\makeatletter
-\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
-\makeatother
-\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
-
-% bibliography with mutiple entries
-%\usepackage{multibib}
-%\newcites{book,misc}{{Books},{Others}}
-\addbibresource{publications.bib}
-
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
 
+\addbibresource{publications.bib}
 \begin{document}
 %\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
 %-----       resume       ---------------------------------------------------------
@@ -49,15 +48,7 @@
 \cvitemwithcomment{Language 3}{Skill level}{Comment}
 
 \include*{./content/extraExample}
+\include*{./content/publicationsLong}
 
-% Publications from a BibTeX file without multibib
-%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
-%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
-\nocite{*}
-\printbibliography
-
-%-----       letter       ---------------------------------------------------------
-\include{./coverLetters/example}
 \end{document}
 
-%% end of file `template.tex'.
