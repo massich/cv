@@ -9,7 +9,6 @@
 % other packages
 \usepackage{newclude}
 \usepackage[firstyear=2002,lastyear=2014.900]{moderntimeline}
-
 \usepackage[backend=bibtex8,
     url=false,
     style=authoryear,
@@ -18,61 +17,8 @@
     maxnames=99,
     dashed=false,
     sorting=ydnt]{biblatex}
-\usepackage{xpatch}
 
-% remove year from the author bibmacro
-\xpatchbibmacro{author}{%
- \usebibmacro{date+extrayear}}
- {}{}{}
-
-% remove the extra . (from expanding both the bibtex and the timeline)
-\xpatchcmd\cventry{.\strut}{\strut}{}{}
-
-%change order and wrap into \cvline
-\DeclareBibliographyDriver{article}{%
-\tldatelabelcventry{
-  \thefield{year}
-    }{
-  \thefield{year}
-    }{
-    \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}}{%
-    \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  %\usebibmacro{author/translator+others}
-  %
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{title}%
-  \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock
-  \printfield{version}%
-  \newunit\newblock
-  \usebibmacro{in:}%
-  \usebibmacro{journal+issuetitle}%
-  \newunit
-  \usebibmacro{byeditor+others}%
-  \newunit
-  \usebibmacro{note+pages}%
-  \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{issn}}
-    {}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \newunit\newblock
-  \usebibmacro{related}%
-  \usebibmacro{finentry}}{}{}{}%
-  }
-
-
+\usepackage{modernTimelinePublications}
 
 % adjust the page margins
 \usepackage[scale=0.8]{geometry}
