@@ -28,6 +28,15 @@
 % personal data
 \input{./content/contactInfo.tex}
 
+% center modertimeline label to the overall time line not the event
+\makeatletter
+\tikzset{
+    tl@startyear/.append style={
+        xshift=(0.5-\tl@startfraction)*\hintscolumnwidth,
+        anchor=base
+    }
+}
+\makeatother
 %----------------------------------------------------------------------------------
 %            content
 %----------------------------------------------------------------------------------
