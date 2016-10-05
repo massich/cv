@@ -111,3 +111,6 @@ sympy-plots-for-*.tex/
 # VIM temproal files
 *.swp
 *.swo
+
+# emacs
+auto
